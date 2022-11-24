@@ -4,7 +4,7 @@ public class Purchase {
     @Expose
     private String title;
     @Expose
-    private String date;
+    private String date="1980.01.01";
     @Expose
     private int sum;
 
@@ -13,6 +13,10 @@ public class Purchase {
     public Purchase(String title, String date, int sum) {
         this.title = title;
         this.date = date;
+        this.sum = sum;
+    }
+    public Purchase(String title,  int sum) {
+        this.title = title;
         this.sum = sum;
     }
 
