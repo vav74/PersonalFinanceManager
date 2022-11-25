@@ -9,7 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Main {
-    public static void main(String[] args) throws IOException, CsvException {
+    public static void main(String[] args) throws IOException, CsvException, ClassNotFoundException {
         Stat stat = new Stat();
         try (ServerSocket serverSocket = new ServerSocket(8989)) { // стартуем сервер один(!) раз
             while (true) { // в цикле(!) принимаем подключения
@@ -18,8 +18,8 @@ public class Main {
                         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
                 ) {
-                    Purchase purchase = new ObjectMapper().readValue(in.readLine(), Purchase.class);
-                    MaxCat maxCat = stat.maxCategoryUpd(purchase);
+                    String request =in.readLine();
+                    MaxCat maxCat = stat.maxCategoryUpd(request);
                     String maxCatJson = new ObjectMapper().writeValueAsString(maxCat);
                     out.println(maxCatJson);
                 }

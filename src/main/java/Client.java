@@ -25,7 +25,6 @@ public class Client {
                  BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
                 GsonBuilder builder = new GsonBuilder();
                 Gson gson = builder.excludeFieldsWithoutExposeAnnotation().create();
-
                 out.println(gson.toJson(purchase));
                 String resp = in.readLine();
                 System.out.println(resp);
@@ -56,7 +55,7 @@ public class Client {
                     Math.round((random.nextInt(1000)+10.0f) / 10) * 10)
             );
         }
-        System.out.println(purchases);
+        //System.out.println(purchases);
         return purchases;
     }
 }

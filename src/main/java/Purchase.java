@@ -1,10 +1,13 @@
 import com.google.gson.annotations.Expose;
 
-public class Purchase {
+import java.io.Serializable;
+
+public class Purchase implements Serializable {
+    private static final long serialVersionUID = 716;
     @Expose
     private String title;
     @Expose
-    private String date="1980.01.01";
+    private String date;
     @Expose
     private int sum;
 
@@ -15,9 +18,12 @@ public class Purchase {
         this.date = date;
         this.sum = sum;
     }
-    public Purchase(String title,  int sum) {
+
+    public Purchase(String title, String date, int sum, String cat) {
         this.title = title;
+        this.date = date;
         this.sum = sum;
+        this.cat = cat;
     }
 
     public Purchase() {
@@ -57,6 +63,6 @@ public class Purchase {
 
     @Override
     public String toString() {
-        return "{ " + title +", "+ date + ", " + sum + " }\n";
+        return "{ " + title + ", " + date + ", " + sum + ", " + cat + " }\n";
     }
 }
